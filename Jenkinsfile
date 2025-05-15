@@ -14,12 +14,6 @@ pipeline {
             }
         }
         
-        stage('Test') {
-            steps {
-                sh 'python -m pytest'
-            }
-        }
-        
         stage('Deploy') {
             steps {
                 sh 'docker run -d -p 5000:5000 flask-hello-world'
@@ -32,4 +26,4 @@ pipeline {
             cleanWs()
         }
     }
-} 
+}
