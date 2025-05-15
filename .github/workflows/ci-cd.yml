@@ -33,5 +33,5 @@ jobs:
         
     - name: Trigger Jenkins build
       run: |
-        curl -X POST http://your-jenkins-url/job/your-job-name/build \
-        --user username:api-token 
+        curl -X POST http://13.200.62.34:8080/job/gihtubaction/build \
+        --user ${{ secrets.JENKINS_USERNAME }}:${{ secrets.JENKINS_API_TOKEN }} 
