@@ -16,7 +16,10 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 5000:5000 flask-hello-world'
+                sh '''
+                    docker rm -f $(docker ps -aq --filter name=flask-hello-world) || true
+                    docker run -d --name flask-hello-world -p 80:5000 flask-hello-world
+                '''
             }
         }
     }
